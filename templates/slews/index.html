@@ -1,0 +1,48 @@
+{% extends "slews/base.html" %}
+{% block body_block %}
+<main class="px-3">
+    <div class="container" id="bg">
+    <div class="container-head">
+      <div class="head-message">
+        <h1 class="display-4">SLEWS</h1>
+        <p class="lead">
+          One of the main pillars for disaster prevention of natural
+          hazards are the Shallow Landslide Early Warning System.</p>
+          <form action="{% url 'slews:user_login' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" name="username" id="inputEmail" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
+            </div><br>
+            <!-- <div class="form-group">
+                <label class="form-check-label"><input type="checkbox"> Remember me</label>
+            </div> -->
+            <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
+            <input type="submit" class="btn btn-primary" value="Login">
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>
+      <p>Lorem ipsum dolor..</p>
+    </div>
+  </div>
+</div> -->
+{% endblock %}

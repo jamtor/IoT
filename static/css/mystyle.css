@@ -1,0 +1,110 @@
+#bg{
+  background-image:url('/static/images/Landslide.gif');
+  background-size: 1800px 900px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  border-style: solid;
+}
+.container-head{
+  padding-top: 150px;
+  padding-bottom: 200px;
+  padding-left: 100px;
+}
+.head-message{
+  /* border-style: solid; */
+  width: 450px;
+  height:390px;
+}
+.head-message h1{
+  font-family: Arial Black,sans-serif;
+}
+.head-message p{
+  font-family:Josefin Sans,sans-serif;
+}
+.navbar{
+  /* border-style: solid; */
+  background-color: #2E578E;
+}
+.navbar img{
+  margin-left: 150px;
+}
+.menu{
+  margin-right: 200px;
+}
+.boxy{
+  background: #b3ddff;
+  border: 2px solid black;
+}
+.nav-item li { display:inline-block; }
+.nav-item li a {
+  display: block;
+  text-decoration: none;
+  font-size:16px;
+  padding:15px;
+  font-family:Josefin Sans,sans-serif;
+  margin:2px;
+}
+.nav-link{
+  transition: all .07s linear;
+  position: relative;}
+.box-animation {
+  transition: all .3s ease-out;
+  position: absolute; }
+.front{
+  position: absolute; }
+.back{
+  position: absolute; }
+
+.nav-link:hover .box-animation{
+  transform: translateZ(-5px) rotateX(90deg);}
+
+.box-animation{
+  transition: all .3s ease-out;
+  position: absolute;
+  transform:translatez(-25px);
+  transform-style:preserve-3d; }
+.front{
+  transform: rotatex(0deg) translatez(35px);
+  position: absolute; }
+.back{
+  transform: rotatex(-90deg) translatez(25px);
+  position: absolute; }
+
+.box-animation{
+  transition:all .3s ease-out;
+  position:absolute;
+  transform:translatez(-25px);
+  transform-style:preserve-3d;
+  top:0;
+  left:0;
+  display:block;
+  width:100%;
+  height:100%;}
+.front{
+  text-align: center;
+  transform:rotatex(0deg) translatez(35px);
+  position:absolute;
+  display:block;
+  width:100%;
+  height:100%;
+  top:0; left:0;
+  padding-top: 5px;
+  background:#2E578E;
+  color:white;
+  box-sizing:
+  border-box;}
+.back{
+  text-align: center;
+  transform:rotatex(-90deg) translatez(25px);
+  position:absolute;
+  display:block;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  padding-top: 5px;
+  background:#39A1FF;
+  color:white;
+  box-sizing:
+  border-box;}
