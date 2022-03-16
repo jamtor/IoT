@@ -20,7 +20,8 @@ def index(request):
     return render(request,'slews/index.html')
 
 def main(request):
-    m = folium.Map(location=[7.038800, 122.100025], zoom_start=12, tiles="cartodbpositron")
+    m = folium.Map(location=[7.038800, 122.100025], zoom_start=12, tiles="cartodbpositron",
+               scrollWheelZoom=False)
 
     acceV = get_accelerometer('SELECT mean(value) FROM device_frmpayload_data_Accelerometer WHERE (dev_eui = \'b02fd62ef52074de\') AND time >= now() - 1h and time <= now() GROUP BY time(5s) fill(null)')
     incliV = get_gyro('SELECT mean(value) FROM device_frmpayload_data_Gyro WHERE (dev_eui = \'b02fd62ef52074de\') AND time >= now() - 1h and time <= now() GROUP BY time(5s) fill(null)')
