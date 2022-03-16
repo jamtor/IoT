@@ -8,9 +8,6 @@
 
 <div class="container-fluid">
   <div class="row">
-    <!-- <span class="border border-dark"></span> -->
-    <!-- <main class="col-md-2 ms-sm-auto col-lg-2x px-md-4">
-    </main> -->
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
@@ -90,68 +87,32 @@
      <main class="col-md-10 ms-sm-auto col-lg-10x px-md-4">
       <div class="row featurette">
         <div class="col-md-6 order-md-1">
-          <div class="container">
-            <div class="guage-holder">
-              <div class="circle-mask">
-                <div class="circle">
-                  <div class="circle-inner" id="c1"></div>
-                </div>
-              </div>
-              <div class="percentage" id="p1">0 °C</div>
-              <!-- <input type="text" class="text-box" placeholder="0%" /> -->
-              <div class="gauge-copy" id="g1"></div>
-            </div>
-          </div>
+          <iframe src="http://192.168.1.78:3000/d-solo/p_57WtBnz/slews?orgId=1&refresh=5s&theme=light&panelId=6" width="450" height="200" frameborder="0"></iframe>
         </div>
-<!-- hellow -->
         <div class="col-md-6 order-md-2">
-          <div class="container">
-            <div class="guage-holder">
-              <div class="circle-mask">
-                <div class="circle">
-                  <div class="circle-inner" id="c2"></div>
-                </div>
-              </div>
-              <div class="percentage" id="p2">0 %</div>
-              <div class="gauge-copy" id="g2"></div>
-            </div>
-          </div>
+          <iframe src="http://192.168.1.78:3000/d-solo/p_57WtBnz/slews?orgId=1&theme=light&panelId=12" width="450" height="200" frameborder="0"></iframe>
         </div>
       </div>
-
-      {{ nodeAc|json_script:"nodeAc" }}
-      {{ nodeGy|json_script:"nodeGy" }}
-      {{ nodeSo|json_script:"nodeSo" }}
-      {{ nodeTe|json_script:"nodeTe" }}
-      {{ nodeTeG|json_script:"nodeTeG" }}
-      {{ nodeSoG|json_script:"nodeSoG" }}
       
       <hr class="featurette-divider">
       <div class="row featurette">
         <div class="col-md-6 order-md-1">
-          <h3>Accelerometer</h3>
-          <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
-          <canvas class="my-4 w-80" id="AccelerometerChart" width="900" height="380"></canvas>
+          <iframe src="http://192.168.1.78:3000/d-solo/p_57WtBnz/slews?orgId=1&refresh=5s&theme=light&panelId=10" width="800" height="300" frameborder="0"></iframe>
         </div>
         <div class="col-md-6 order-md-2">
-
-          <h3>Gyro</h3>
-          <canvas class="my-4 w-80" id="GyroChart" width="900" height="380"></canvas>
+          <iframe src="http://192.168.1.78:3000/d-solo/p_57WtBnz/slews?orgId=1&refresh=5s&theme=light&panelId=8" width="800" height="300" frameborder="0"></iframe>
         </div>
       </div>
 
-      <!-- <canvas class="my-4 w-100" id="myChart1" width="900" height="380"></canvas> -->
-
       <div class="row featurette">
         <div class="col-md-6 order-md-1">
-          <h3>Temperature</h3>
-          <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
-          <canvas class="my-4 w-80" id="TemperatureChart" width="900" height="380"></canvas>
+          <!-- <h3>Temperature</h3> -->
+          <!-- <canvas class="my-4 w-80" id="TemperatureChart" width="900" height="380"></canvas> -->
         </div>
         <div class="col-md-6 order-md-2">
 
-          <h3>Soil Moisture</h3>
-          <canvas class="my-4 w-80" id="SoilChart" width="900" height="380"></canvas>
+          <!-- <h3>Soil Moisture</h3> -->
+          <!-- <canvas class="my-4 w-80" id="SoilChart" width="900" height="380"></canvas> -->
         </div>
       </div>
 

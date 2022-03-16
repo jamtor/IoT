@@ -191,47 +191,4 @@ $(function () {
     }
   })
 
-  // var gauge5 = Gauge(
-  //   document.getElementById("gauge5"), {
-  //     max: 200,
-  //     dialStartAngle: 0,
-  //     dialEndAngle: 90,
-  //     value: 50
-  //   }
-  // );
-  // var innercircle = document.getElementById('innercircle')
-  // innercircle.style.transform = rotate(-0deg);
-  // $('.circle-inner, .gauge-copy').css({
-  //   'transform' : 'rotate(' + 45 + 'deg)'
-  // });
-  // $('.gauge-copy').css({
-  //   'transform' : 'translate(-50%, -50%) rotate(' + 45 * 1.8 + 'deg)'
-  // });
-  // $('.text-box').keyup(function(){
-  //   if ($('.text-box').val() == '') {
-  //     $('.circle-inner, .gauge-copy').css({
-  //       'transform' : 'rotate(-45deg)'
-  //     });
-  //     $('.gauge-copy').css({
-  //       'transform' : 'translate(-50%, -50%) rotate(0deg)'
-  //     });
-  //     $('.percentage').text('0 %');
-  //   }
-  //   else if($('.text-box').val() >= 0 && $('.text-box').val() <= 100) {
-  //     var dVal = $(this).val();
-  //     var newVal = dVal * 1.8 - 45;
-  //     $('.circle-inner, .gauge-copy').css({
-  //       'transform' : 'rotate(' + newVal + 'deg)'
-  //     });
-  //     $('.gauge-copy').css({
-  //       'transform' : 'translate(-50%, -50%) rotate(' + dVal * 1.8 + 'deg)'
-  //     });
-  //     $('.percentage').text(dVal + ' %');
-  //   } else {
-  //     $('.percentage').text('Invalid input value');
-  //   }
-  // });
-  // var value5 = 90;
-  // gauge5.setValueAnimated(value5 * 2, 1);
-
 });

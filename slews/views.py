@@ -22,22 +22,11 @@ def index(request):
 def main(request):
     m = folium.Map(location=[7.038800, 122.100025], zoom_start=12, tiles="cartodbpositron")
 
-    
-
-    # nodeAccelerometer = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Accelerometer WHERE time >= now() - 30m GROUP BY dev_eui'))
-    # nodeGyro = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Gyro WHERE time >= now() - 30m GROUP BY dev_eui'))
-    # nodeGyro = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Gyro WHERE (dev_eui = \'b02fd62ef52074de\') AND time >= now() - 1h and time <= now() GROUP BY time(5s) fill(null)'))
-    # nodeSoil = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_SoilMoisture WHERE time >= now() - 30m GROUP BY dev_eui'))
-    # nodeTemperature = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Temperature WHERE time >= now() - 6h GROUP BY dev_eui'))
-
     acceV = get_accelerometer('SELECT mean(value) FROM device_frmpayload_data_Accelerometer WHERE (dev_eui = \'b02fd62ef52074de\') AND time >= now() - 1h and time <= now() GROUP BY time(5s) fill(null)')
     incliV = get_gyro('SELECT mean(value) FROM device_frmpayload_data_Gyro WHERE (dev_eui = \'b02fd62ef52074de\') AND time >= now() - 1h and time <= now() GROUP BY time(5s) fill(null)')
     soilV = get_soilm('SELECT mean(value) FROM device_frmpayload_data_SoilMoisture WHERE (dev_eui = \'b02fd62ef52074de\') AND time >= now() - 1h and time <= now() GROUP BY time(5s) fill(null)')
     tempV = get_temperature('SELECT mean(value) FROM device_frmpayload_data_Temperature WHERE (dev_eui = \'b02fd62ef52074de\') AND time >= now() - 1h and time <= now() GROUP BY time(5s) fill(null)')
 
-    # for item in nodeTemperature:
-    #     for data_item in item:
-    #         tempV = float(data_item['mean'])
 
     folium.Marker([7.042094, 122.060491], tooltip='Click to see details', popup="Accelerometer: " + '{:.2f}'.format(acceV) +
                                     "<br> Inclinometer: " + '{:.2f}'.format(incliV) + "<br> Soil Moisture: " + '{:.2f}'.format(soilV) +
