@@ -10,6 +10,12 @@
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
       <div class="sidebar-sticky pt-3">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>SLEWS</span>
+          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" href="#">
@@ -17,10 +23,10 @@
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file"></span>
-              Orders
+              ARMS
             </a>
           </li>
           <li class="nav-item">
@@ -46,11 +52,11 @@
               <span data-feather="layers"></span>
               Integrations
             </a>
-          </li>
+          </li> -->
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
+          <span>ARMS</span>
           <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle"></span>
           </a>
@@ -58,11 +64,11 @@
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
+              <span data-feather="file"></span>
+              Dashboard
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="file-text"></span>
               Last quarter
@@ -79,21 +85,36 @@
               <span data-feather="file-text"></span>
               Year-end sale
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
-    </span>
-     <main class="col-md-10 ms-sm-auto col-lg-10x px-md-4">
-      <div class="row featurette">
+    <main class="col-md-10 ms-sm-auto col-lg-10x px-md-4">
+      <hr class="featurette-divider">
+      <div class="container-fluid">
+        {{ armsmap|safe }}
+        <!-- <div class="row justify-content-cnter">
+          <div class="col-sm-12 order-md-1">
+            {{ armsmap|safe }}
+          </div>
+        </div> -->
+      </div>
+      <!-- <div class="d-flex justify-content-center">
+        {{ armsmap|safe }}
+      </div> -->
+      <hr class="featurette-divider">
+      <div class="row justify-content-cnter">
         <div class="col-md-6 order-md-1">
-          <iframe src="http://192.168.1.78:3000/d-solo/p_57WtBnz/slews?orgId=1&refresh=5s&theme=light&panelId=6" width="450" height="200" frameborder="0"></iframe>
+          <div class="d-flex justify-content-center">
+            <iframe src="http://192.168.1.78:3000/d-solo/p_57WtBnz/slews?orgId=1&refresh=5s&theme=light&panelId=6" width="450" height="200" frameborder="0"></iframe>
+          </div>
         </div>
         <div class="col-md-6 order-md-2">
-          <iframe src="http://192.168.1.78:3000/d-solo/p_57WtBnz/slews?orgId=1&theme=light&panelId=12" width="450" height="200" frameborder="0"></iframe>
+          <div class="d-flex justify-content-center">
+            <iframe src="http://192.168.1.78:3000/d-solo/p_57WtBnz/slews?orgId=1&theme=light&panelId=12" width="450" height="200" frameborder="0"></iframe>
+          </div>
         </div>
       </div>
-      
       <hr class="featurette-divider">
       <div class="row featurette">
         <div class="col-md-6 order-md-1">
@@ -104,19 +125,8 @@
         </div>
       </div>
 
-      <div class="row featurette">
-        <div class="col-md-6 order-md-1">
-          <!-- <h3>Temperature</h3> -->
-          <!-- <canvas class="my-4 w-80" id="TemperatureChart" width="900" height="380"></canvas> -->
-        </div>
-        <div class="col-md-6 order-md-2">
-
-          <!-- <h3>Soil Moisture</h3> -->
-          <!-- <canvas class="my-4 w-80" id="SoilChart" width="900" height="380"></canvas> -->
-        </div>
-      </div>
-
       <hr class="featurette-divider">
+      
     </main>
     
   </div>

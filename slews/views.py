@@ -1,3 +1,4 @@
+from enum import auto
 from http import client
 from django.shortcuts import render
 from slews.forms import UserForm,UserProfileInfoForm
@@ -20,7 +21,7 @@ def index(request):
     return render(request,'slews/index.html')
 
 def main(request):
-    m = folium.Map(location=[7.038800, 122.100025], zoom_start=12, tiles="cartodbpositron",
+    slewsmap = folium.Map(location=[7.038800, 122.100025], zoom_start=12, tiles="cartodbpositron",
                scrollWheelZoom=False)
 
     acceV = get_accelerometer('SELECT mean(value) FROM device_frmpayload_data_Accelerometer WHERE (dev_eui = \'b02fd62ef52074de\') AND time >= now() - 1h and time <= now() GROUP BY time(5s) fill(null)')
@@ -29,10 +30,10 @@ def main(request):
     tempV = get_temperature('SELECT mean(value) FROM device_frmpayload_data_Temperature WHERE (dev_eui = \'b02fd62ef52074de\') AND time >= now() - 1h and time <= now() GROUP BY time(5s) fill(null)')
 
 
-    folium.Marker([7.042094, 122.060491], tooltip='Click to see details', popup="Accelerometer: " + '{:.2f}'.format(acceV) +
+    folium.Marker([7.12634318821439, 121.9271515462821], tooltip='Click to see details', popup="Accelerometer: " + '{:.2f}'.format(acceV) +
                                     "<br> Inclinometer: " + '{:.2f}'.format(incliV) + "<br> Soil Moisture: " + '{:.2f}'.format(soilV) +
                                     "<br> Temperature: " + '{:.2f}'.format(tempV),
-                                    icon=folium.Icon(color='green')).add_to(m)
+                                    icon=folium.Icon(color='green')).add_to(slewsmap)
 
 
     # folium.Marker([7.12634318821439, 121.9271515462821], tooltip='Click to see details', popup="Rating: 63% Warning<br>Soil moisture: 52% <br>Movement:4m2",
@@ -41,44 +42,53 @@ def main(request):
     #                 icon=folium.Icon(color='orange')).add_to(m)
     # folium.Marker([7.128935217462367, 121.93124274798035], tooltip='Click to see details', popup="Rating: 63% Warning<br>Soil moisture: 52% <br>Movement:4m2",
     #                 icon=folium.Icon(color='red')).add_to(m)
-    m = m._repr_html_()
+    slewsmap = slewsmap._repr_html_()
+
     return render(request,'slews/main.html',{
-                                'map':m
+                                'slewsmap':slewsmap
     })
 
 @login_required
 def dashboard(request):
 
-    nodeAccelerometer = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Accelerometer WHERE time >= now() - 6h GROUP BY time(10m) fill(linear)'))
-    nodeGyro = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Gyro WHERE time >= now() - 6h GROUP BY time(10m) fill(linear)'))
-    nodeSoil = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_SoilMoisture WHERE time >= now() - 6h GROUP BY time(10m) fill(linear)'))
-    nodeTemperature = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Temperature WHERE time >= now() - 6h GROUP BY time(10m) fill(linear)'))
-    nodeTemperatureGauge = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Temperature WHERE time >= now() - 30m GROUP BY dev_eui'))
-    nodeSoilGauge = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_SoilMoisture WHERE time >= now() - 30m GROUP BY dev_eui'))
+    # nodeAccelerometer = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Accelerometer WHERE time >= now() - 6h GROUP BY time(10m) fill(linear)'))
+    # nodeGyro = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Gyro WHERE time >= now() - 6h GROUP BY time(10m) fill(linear)'))
+    # nodeSoil = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_SoilMoisture WHERE time >= now() - 6h GROUP BY time(10m) fill(linear)'))
+    # nodeTemperature = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Temperature WHERE time >= now() - 6h GROUP BY time(10m) fill(linear)'))
+    # nodeTemperatureGauge = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_Temperature WHERE time >= now() - 30m GROUP BY dev_eui'))
+    # nodeSoilGauge = list(influxcon.get_influxdb_client().query('SELECT mean(value) FROM device_frmpayload_data_SoilMoisture WHERE time >= now() - 30m GROUP BY dev_eui'))
 
-    print(nodeSoilGauge[0])
-    for item in nodeSoilGauge:
-        for data_item in item:
-            print(data_item['mean'])
+    # print(nodeSoilGauge[0])
+    # for item in nodeSoilGauge:
+    #     for data_item in item:
+    #         print(data_item['mean'])
 
-    nodeAc = json.dumps(nodeAccelerometer)
-    nodeGy = json.dumps(nodeGyro)
-    nodeSo = json.dumps(nodeSoil)
-    nodeTe = json.dumps(nodeTemperature)
-    nodeTeG = json.dumps(nodeTemperatureGauge)
-    nodeSoG = json.dumps(nodeSoilGauge)
+    # nodeAc = json.dumps(nodeAccelerometer)
+    # nodeGy = json.dumps(nodeGyro)
+    # nodeSo = json.dumps(nodeSoil)
+    # nodeTe = json.dumps(nodeTemperature)
+    # nodeTeG = json.dumps(nodeTemperatureGauge)
+    # nodeSoG = json.dumps(nodeSoilGauge)
+    #6.926468, 122.089632
+    f = folium.Figure(height=500)
+    armsmap = folium.Map(location=[7.127715, 121.959492], zoom_start=14, tiles="cartodbpositron",
+               scrollWheelZoom=False).add_to(f)
 
-    return render(request,'slews/dashboardslews.html',{'nodeAc':nodeAc, 'nodeGy':nodeGy, 'nodeSo':nodeSo, 'nodeTe':nodeTe, 'nodeTeG':nodeTeG, 'nodeSoG':nodeSoG})
+    folium.Marker([7.12634318821439, 121.9271515462821],
+                     icon=folium.Icon(color='red')).add_to(armsmap)
 
-    # return render(request,'slews/dashboardslews.html',{'nodeAc':nodeAc})
+    folium.Marker([7.1286123128787136, 121.9294096569382],
+                     icon=folium.Icon(color='green')).add_to(armsmap)
+    
+    folium.Marker([7.128935217462367, 121.93124274798035],
+                     icon=folium.Icon(color='green')).add_to(armsmap)
 
-    # SELECT mean("soilmoisture") FROM "landslide" WHERE ("name" = 'DOSTSlews') AND time >= now() - 6h GROUP BY time(2m) fill(null)
-    # return render(request,'slews/dashboardslews.html')
+    armsmap = armsmap._repr_html_()
 
-# @login_required
-# def special(request):
-#     # return HttpResponse("Your are logged in, Nice!")
-#     return render(request,'slews/main.html')
+    return render(request,'slews/dashboardslews.html',{
+                                'armsmap':armsmap
+    })
+
 
 @login_required
 def user_logout(request):
